@@ -1,177 +1,177 @@
-<?php get_header(); 
+<?php get_header();
 
 if ( get_option( 'show_on_front' ) == 'page' ) {
-	
+
     include( get_page_template() );
-	
+
 }else {
 
-	if(isset($_POST['submitted']) && !defined('PIRATE_FORMS_VERSION') && !shortcode_exists( 'pirate_forms' ) ) :
+  if(isset($_POST['submitted']) && !defined('PIRATE_FORMS_VERSION') && !shortcode_exists( 'pirate_forms' ) ) :
 
-			/* recaptcha */
-			
-			$zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
+      /* recaptcha */
 
-			$zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
-			
-			$zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
+      $zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
 
-			if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
+      $zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
 
-		        $captcha;
+      $zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
 
-		        if( isset($_POST['g-recaptcha-response']) ){
+      if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
 
-		          $captcha=$_POST['g-recaptcha-response'];
+            $captcha;
 
-		        }
+            if( isset($_POST['g-recaptcha-response']) ){
 
-		        if( !$captcha ){
+              $captcha=$_POST['g-recaptcha-response'];
 
-		          $hasError = true;    
-		          
-		        }
+            }
 
-		        $response = wp_remote_get( "https://www.google.com/recaptcha/api/siteverify?secret=".$zerif_contactus_secretkey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'] );
+            if( !$captcha ){
 
-		        if($response['body'].success==false) {
+              $hasError = true;
 
-		        	$hasError = true;
+            }
 
-		        }
+            $response = wp_remote_get( "https://www.google.com/recaptcha/api/siteverify?secret=".$zerif_contactus_secretkey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'] );
 
-	        endif;
+            if($response['body'].success==false) {
 
-			/* name */
+              $hasError = true;
 
-			if(trim($_POST['myname']) === ''):
+            }
 
-				$nameError = __('* Please enter your name.','zerif-lite');
+          endif;
 
-				$hasError = true;
+      /* name */
 
-			else:
+      if(trim($_POST['myname']) === ''):
 
-				$name = trim($_POST['myname']);
+        $nameError = __('* Please enter your name.','zerif-lite');
 
-			endif;
+        $hasError = true;
 
-			/* email */
+      else:
 
-			if(trim($_POST['myemail']) === ''):
+        $name = trim($_POST['myname']);
 
-				$emailError = __('* Please enter your email address.','zerif-lite');
+      endif;
 
-				$hasError = true;
+      /* email */
 
-			elseif (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['myemail']))) :
+      if(trim($_POST['myemail']) === ''):
 
-				$emailError = __('* You entered an invalid email address.','zerif-lite');
+        $emailError = __('* Please enter your email address.','zerif-lite');
 
-				$hasError = true;
+        $hasError = true;
 
-			else:
+      elseif (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['myemail']))) :
 
-				$email = trim($_POST['myemail']);
+        $emailError = __('* You entered an invalid email address.','zerif-lite');
 
-			endif;
+        $hasError = true;
 
-			/* subject */
+      else:
 
-			if(trim($_POST['mysubject']) === ''):
+        $email = trim($_POST['myemail']);
 
-				$subjectError = __('* Please enter a subject.','zerif-lite');
+      endif;
 
-				$hasError = true;
+      /* subject */
 
-			else:
+      if(trim($_POST['mysubject']) === ''):
 
-				$subject = trim($_POST['mysubject']);
+        $subjectError = __('* Please enter a subject.','zerif-lite');
 
-			endif;
+        $hasError = true;
 
-			/* message */
+      else:
 
-			if(trim($_POST['mymessage']) === ''):
+        $subject = trim($_POST['mysubject']);
 
-				$messageError = __('* Please enter a message.','zerif-lite');
+      endif;
 
-				$hasError = true;
+      /* message */
 
-			else:
+      if(trim($_POST['mymessage']) === ''):
 
-				$message = stripslashes(trim($_POST['mymessage']));
+        $messageError = __('* Please enter a message.','zerif-lite');
 
-			endif;
+        $hasError = true;
 
-			/* send the email */
+      else:
 
-			if(!isset($hasError)):
+        $message = stripslashes(trim($_POST['mymessage']));
 
-				$zerif_contactus_email = get_theme_mod('zerif_contactus_email');
-				
-				if( empty($zerif_contactus_email) ):
-				
-					$emailTo = get_theme_mod('zerif_email');
-				
-				else:
-					
-					$emailTo = $zerif_contactus_email;
-				
-				endif;
+      endif;
 
-				if(isset($emailTo) && $emailTo != ""):
+      /* send the email */
 
-					if( empty($subject) ):
-						$subject = 'From '.$name;
-					endif;
+      if(!isset($hasError)):
 
-					$body = "Name: $name \n\nEmail: $email \n\n Subject: $subject \n\n Message: $message";
+        $zerif_contactus_email = get_theme_mod('zerif_contactus_email');
 
-					/* FIXED HEADERS FOR EMAIL NOT GOING TO SPAM */
-					$zerif_admin_email = get_option( 'admin_email' );
-					$zerif_sitename = strtolower( $_SERVER['SERVER_NAME'] );
+        if( empty($zerif_contactus_email) ):
 
-					function zerif_is_localhost() {
-						$zerif_server_name = strtolower( $_SERVER['SERVER_NAME'] );
-						return in_array( $zerif_server_name, array( 'localhost', '127.0.0.1' ) );
-					}
-					
-					if ( zerif_is_localhost() ) {
-					
-						$headers = 'From: '.$name.' <'.$zerif_admin_email.'>' . "\r\n" . 'Reply-To: ' . $email;
-						
-					} else {
-					
-						if ( substr( $zerif_sitename, 0, 4 ) == 'www.' ) {
-							$zerif_sitename = substr( $zerif_sitename, 4 );
-						}
-						
-						$headers = 'From: '.$name.' <wordpress@'.$zerif_sitename.'>' . "\r\n" . 'Reply-To: ' . $email;
-						
-					}
+          $emailTo = get_theme_mod('zerif_email');
 
-					wp_mail($emailTo, $subject, $body, $headers);
+        else:
 
-					$emailSent = true;
+          $emailTo = $zerif_contactus_email;
 
-				else:
+        endif;
 
-					$emailSent = false;
+        if(isset($emailTo) && $emailTo != ""):
 
-				endif;
+          if( empty($subject) ):
+            $subject = 'From '.$name;
+          endif;
 
-			endif;
+          $body = "Name: $name \n\nEmail: $email \n\n Subject: $subject \n\n Message: $message";
 
-		endif;
+          /* FIXED HEADERS FOR EMAIL NOT GOING TO SPAM */
+          $zerif_admin_email = get_option( 'admin_email' );
+          $zerif_sitename = strtolower( $_SERVER['SERVER_NAME'] );
 
-	$zerif_bigtitle_show = get_theme_mod('zerif_bigtitle_show');
+          function zerif_is_localhost() {
+            $zerif_server_name = strtolower( $_SERVER['SERVER_NAME'] );
+            return in_array( $zerif_server_name, array( 'localhost', '127.0.0.1' ) );
+          }
 
-	if( isset($zerif_bigtitle_show) && $zerif_bigtitle_show != 1 ):
+          if ( zerif_is_localhost() ) {
 
-		get_template_part( 'sections/big_title' );
+            $headers = 'From: '.$name.' <'.$zerif_admin_email.'>' . "\r\n" . 'Reply-To: ' . $email;
 
-	endif;
+          } else {
+
+            if ( substr( $zerif_sitename, 0, 4 ) == 'www.' ) {
+              $zerif_sitename = substr( $zerif_sitename, 4 );
+            }
+
+            $headers = 'From: '.$name.' <wordpress@'.$zerif_sitename.'>' . "\r\n" . 'Reply-To: ' . $email;
+
+          }
+
+          wp_mail($emailTo, $subject, $body, $headers);
+
+          $emailSent = true;
+
+        else:
+
+          $emailSent = false;
+
+        endif;
+
+      endif;
+
+    endif;
+
+  $zerif_bigtitle_show = get_theme_mod('zerif_bigtitle_show');
+
+  if( isset($zerif_bigtitle_show) && $zerif_bigtitle_show != 1 ):
+
+    get_template_part( 'sections/big_title' );
+
+  endif;
 
 ?>
 
@@ -181,207 +181,207 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
 
 <?php
 
-	/* OUR FOCUS SECTION */
+  /* OUR FOCUS SECTION */
 
-	$zerif_ourfocus_show = get_theme_mod('zerif_ourfocus_show');
+  $zerif_ourfocus_show = get_theme_mod('zerif_ourfocus_show');
 
-	if( isset($zerif_ourfocus_show) && $zerif_ourfocus_show != 1 ):
+  if( isset($zerif_ourfocus_show) && $zerif_ourfocus_show != 1 ):
 
-		get_template_part( 'sections/our_focus' );
+    get_template_part( 'sections/our_focus' );
 
-	endif;
+  endif;
 
-	/* RIBBON WITH BOTTOM BUTTON */
+  /* RIBBON WITH BOTTOM BUTTON */
 
-	get_template_part( 'sections/ribbon_with_bottom_button' );
+  get_template_part( 'sections/ribbon_with_bottom_button' );
 
-	/* ABOUT US */
+  /* ABOUT US */
 
-	$zerif_aboutus_show = get_theme_mod('zerif_aboutus_show');
+  $zerif_aboutus_show = get_theme_mod('zerif_aboutus_show');
 
-	if( isset($zerif_aboutus_show) && $zerif_aboutus_show != 1 ):
+  if( isset($zerif_aboutus_show) && $zerif_aboutus_show != 1 ):
 
-		get_template_part( 'sections/about_us' );
+    get_template_part( 'sections/about_us' );
 
-	endif;
+  endif;
 
-	/* OUR TEAM */
+  /* OUR TEAM */
 
-	$zerif_ourteam_show = get_theme_mod('zerif_ourteam_show');
+  $zerif_ourteam_show = get_theme_mod('zerif_ourteam_show');
 
-	if( isset($zerif_ourteam_show) && $zerif_ourteam_show != 1 ):
+  if( isset($zerif_ourteam_show) && $zerif_ourteam_show != 1 ):
 
-		get_template_part( 'sections/our_team' );
+    get_template_part( 'sections/our_team' );
 
-	endif;
+  endif;
 
-	/* TESTIMONIALS */
+  /* TESTIMONIALS */
 
-	$zerif_testimonials_show = get_theme_mod('zerif_testimonials_show');
+  $zerif_testimonials_show = get_theme_mod('zerif_testimonials_show');
 
-	if( isset($zerif_testimonials_show) && $zerif_testimonials_show != 1 ):
+  if( isset($zerif_testimonials_show) && $zerif_testimonials_show != 1 ):
 
-		get_template_part( 'sections/testimonials' );
+    get_template_part( 'sections/testimonials' );
 
-	endif;
+  endif;
 
-	/* RIBBON WITH RIGHT SIDE BUTTON */
+  /* RIBBON WITH RIGHT SIDE BUTTON */
 
-	get_template_part( 'sections/ribbon_with_right_button' );
+  get_template_part( 'sections/ribbon_with_right_button' );
 
-	/* LATEST NEWS */
-	$zerif_latestnews_show = get_theme_mod('zerif_latestnews_show');
+  /* LATEST NEWS */
+  $zerif_latestnews_show = get_theme_mod('zerif_latestnews_show');
 
-	if( isset($zerif_latestnews_show) && $zerif_latestnews_show != 1 ):
+  if( isset($zerif_latestnews_show) && $zerif_latestnews_show != 1 ):
 
-		get_template_part( 'sections/latest_news' );
+    get_template_part( 'sections/latest_news' );
 
-	endif;
+  endif;
 
-		/* CONTACT US */
-		$zerif_contactus_show = get_theme_mod('zerif_contactus_show');
+    /* CONTACT US */
+    $zerif_contactus_show = get_theme_mod('zerif_contactus_show');
 
-		if( isset($zerif_contactus_show) && $zerif_contactus_show != 1 ):
-			?>
-			<section class="contact-us" id="contact">
-				<div class="container">
-					<!-- SECTION HEADER -->
-					<div class="section-header">
+    if( isset($zerif_contactus_show) && $zerif_contactus_show != 1 ):
+      ?>
+      <section class="contact-us" id="contact">
+        <div class="container">
+          <!-- SECTION HEADER -->
+          <div class="section-header">
 
-						<?php
-						
-							global $wp_customize;
+            <?php
 
-							$zerif_contactus_title = get_theme_mod('zerif_contactus_title',__('Get in touch','zerif-lite'));
-							if ( !empty($zerif_contactus_title) ):
-								echo '<h2 class="white-text">'.wp_kses_post( $zerif_contactus_title ).'</h2>';
-							elseif ( isset( $wp_customize ) ):
-								echo '<h2 class="white-text zerif_hidden_if_not_customizer"></h2>';
-							endif;
+              global $wp_customize;
 
-							$zerif_contactus_subtitle = get_theme_mod('zerif_contactus_subtitle');
-							if(isset($zerif_contactus_subtitle) && $zerif_contactus_subtitle != ""):
-								echo '<div class="white-text section-legend">'.wp_kses_post( $zerif_contactus_subtitle ).'</div>';
-							elseif ( isset( $wp_customize ) ):
-								echo '<h6 class="white-text section-legend zerif_hidden_if_not_customizer">'.$zerif_contactus_subtitle.'</h6>';
-							endif;
-						?>
-					</div>
-					<!-- / END SECTION HEADER -->
+              $zerif_contactus_title = get_theme_mod('zerif_contactus_title',__('Get in touch','zerif-lite'));
+              if ( !empty($zerif_contactus_title) ):
+                echo '<h2 class="white-text">'.wp_kses_post( $zerif_contactus_title ).'</h2>';
+              elseif ( isset( $wp_customize ) ):
+                echo '<h2 class="white-text zerif_hidden_if_not_customizer"></h2>';
+              endif;
 
-					<?php
-					if ( defined('PIRATE_FORMS_VERSION') && shortcode_exists( 'pirate_forms' ) ):
+              $zerif_contactus_subtitle = get_theme_mod('zerif_contactus_subtitle');
+              if(isset($zerif_contactus_subtitle) && $zerif_contactus_subtitle != ""):
+                echo '<div class="white-text section-legend">'.wp_kses_post( $zerif_contactus_subtitle ).'</div>';
+              elseif ( isset( $wp_customize ) ):
+                echo '<h6 class="white-text section-legend zerif_hidden_if_not_customizer">'.$zerif_contactus_subtitle.'</h6>';
+              endif;
+            ?>
+          </div>
+          <!-- / END SECTION HEADER -->
 
-						echo '<div class="row">';
-							echo do_shortcode('[pirate_forms]');
-						echo '</div>';
+          <?php
+          if ( defined('PIRATE_FORMS_VERSION') && shortcode_exists( 'pirate_forms' ) ):
 
-					else:
-					?>
-						<!-- CONTACT FORM-->
-						<div class="row">
+            echo '<div class="row">';
+              echo do_shortcode('[pirate_forms]');
+            echo '</div>';
 
-							<?php
+          else:
+          ?>
+            <!-- CONTACT FORM-->
+            <div class="row">
 
-							if(isset($emailSent) && $emailSent == true) :
+              <?php
 
-								echo '<div class="notification success"><p>'.__('Thanks, your email was sent successfully!','zerif-lite').'</p></div>';
+              if(isset($emailSent) && $emailSent == true) :
 
-							elseif(isset($_POST['submitted'])):
+                echo '<div class="notification success"><p>'.__('Thanks, your email was sent successfully!','zerif-lite').'</p></div>';
 
-								echo '<div class="notification error"><p>'.__('Sorry, an error occured.','zerif-lite').'</p></div>';
+              elseif(isset($_POST['submitted'])):
 
-							endif;
+                echo '<div class="notification error"><p>'.__('Sorry, an error occured.','zerif-lite').'</p></div>';
 
-							if(isset($nameError) && $nameError != '') :
+              endif;
 
-								echo '<div class="notification error"><p>'.esc_html($nameError).'</p></div>';
+              if(isset($nameError) && $nameError != '') :
 
-							endif;
+                echo '<div class="notification error"><p>'.esc_html($nameError).'</p></div>';
 
-							if(isset($emailError) && $emailError != '') :
+              endif;
 
-								echo '<div class="notification error"><p>'.esc_html($emailError).'</p></div>';
+              if(isset($emailError) && $emailError != '') :
 
-							endif;
+                echo '<div class="notification error"><p>'.esc_html($emailError).'</p></div>';
 
-							if(isset($subjectError) && $subjectError != '') :
+              endif;
 
-								echo '<div class="notification error"><p>'.esc_html($subjectError).'</p></div>';
+              if(isset($subjectError) && $subjectError != '') :
 
-							endif;
+                echo '<div class="notification error"><p>'.esc_html($subjectError).'</p></div>';
 
-							if(isset($messageError) && $messageError != '') :
+              endif;
 
-								echo '<div class="notification error"><p>'.esc_html($messageError).'</p></div>';
+              if(isset($messageError) && $messageError != '') :
 
-							endif;
+                echo '<div class="notification error"><p>'.esc_html($messageError).'</p></div>';
 
-							?>
+              endif;
 
-							<form role="form" method="POST" action="" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
+              ?>
 
-								<input type="hidden" name="scrollPosition">
+              <form role="form" method="POST" action="" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
 
-								<input type="hidden" name="submitted" id="submitted" value="true" />
+                <input type="hidden" name="scrollPosition">
 
-								<div class="col-lg-4 col-sm-4 zerif-rtl-contact-name" data-scrollreveal="enter left after 0s over 1s">
-									<label for="myname" class="screen-reader-text"><?php _e( 'Your Name', 'zerif-lite' ); ?></label>
-									<input required="required" type="text" name="myname" id="myname" placeholder="<?php _e('Your Name','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['myname'])) echo esc_attr($_POST['myname']);?>">
-								</div>
+                <input type="hidden" name="submitted" id="submitted" value="true" />
 
-								<div class="col-lg-4 col-sm-4 zerif-rtl-contact-email" data-scrollreveal="enter left after 0s over 1s">
-									<label for="myemail" class="screen-reader-text"><?php _e( 'Your Email', 'zerif-lite' ); ?></label>
-									<input required="required" type="email" name="myemail" id="myemail" placeholder="<?php _e('Your Email','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['myemail'])) echo is_email($_POST['myemail']) ? $_POST['myemail'] : ""; ?>">
-								</div>
+                <div class="col-lg-4 col-sm-4 zerif-rtl-contact-name" data-scrollreveal="enter left after 0s over 1s">
+                  <label for="myname" class="screen-reader-text"><?php _e( 'Your Name', 'zerif-lite' ); ?></label>
+                  <input required="required" type="text" name="myname" id="myname" placeholder="<?php _e('Your Name','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['myname'])) echo esc_attr($_POST['myname']);?>">
+                </div>
 
-								<div class="col-lg-4 col-sm-4 zerif-rtl-contact-subject" data-scrollreveal="enter left after 0s over 1s">
-									<label for="mysubject" class="screen-reader-text"><?php _e( 'Subject', 'zerif-lite' ); ?></label>
-									<input required="required" type="text" name="mysubject" id="mysubject" placeholder="<?php _e('Subject','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['mysubject'])) echo esc_attr($_POST['mysubject']);?>">
-								</div>
+                <div class="col-lg-4 col-sm-4 zerif-rtl-contact-email" data-scrollreveal="enter left after 0s over 1s">
+                  <label for="myemail" class="screen-reader-text"><?php _e( 'Your Email', 'zerif-lite' ); ?></label>
+                  <input required="required" type="email" name="myemail" id="myemail" placeholder="<?php _e('Your Email','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['myemail'])) echo is_email($_POST['myemail']) ? $_POST['myemail'] : ""; ?>">
+                </div>
 
-								<div class="col-lg-12 col-sm-12" data-scrollreveal="enter right after 0s over 1s">
-									<label for="mymessage" class="screen-reader-text"><?php _e( 'Your Message', 'zerif-lite' ); ?></label>
-									<textarea name="mymessage" id="mymessage" class="form-control textarea-box" placeholder="<?php _e('Your Message','zerif-lite'); ?>"><?php if(isset($_POST['mymessage'])) { echo esc_html($_POST['mymessage']); } ?></textarea>
-								</div>
+                <div class="col-lg-4 col-sm-4 zerif-rtl-contact-subject" data-scrollreveal="enter left after 0s over 1s">
+                  <label for="mysubject" class="screen-reader-text"><?php _e( 'Subject', 'zerif-lite' ); ?></label>
+                  <input required="required" type="text" name="mysubject" id="mysubject" placeholder="<?php _e('Subject','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['mysubject'])) echo esc_attr($_POST['mysubject']);?>">
+                </div>
 
-								<?php
-								$zerif_contactus_button_label = get_theme_mod('zerif_contactus_button_label',__('Send Message','zerif-lite'));
-								if( !empty($zerif_contactus_button_label) ):
-									echo '<button class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">'.$zerif_contactus_button_label.'</button>';
-								elseif ( isset( $wp_customize ) ):
-									echo '<button class="btn btn-primary custom-button red-btn zerif_hidden_if_not_customizer" type="submit" data-scrollreveal="enter left after 0s over 1s"></button>';
-								endif;
-								?>
+                <div class="col-lg-12 col-sm-12" data-scrollreveal="enter right after 0s over 1s">
+                  <label for="mymessage" class="screen-reader-text"><?php _e( 'Your Message', 'zerif-lite' ); ?></label>
+                  <textarea name="mymessage" id="mymessage" class="form-control textarea-box" placeholder="<?php _e('Your Message','zerif-lite'); ?>"><?php if(isset($_POST['mymessage'])) { echo esc_html($_POST['mymessage']); } ?></textarea>
+                </div>
 
-								<?php
+                <?php
+                $zerif_contactus_button_label = get_theme_mod('zerif_contactus_button_label',__('Send Message','zerif-lite'));
+                if( !empty($zerif_contactus_button_label) ):
+                  echo '<button class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">'.$zerif_contactus_button_label.'</button>';
+                elseif ( isset( $wp_customize ) ):
+                  echo '<button class="btn btn-primary custom-button red-btn zerif_hidden_if_not_customizer" type="submit" data-scrollreveal="enter left after 0s over 1s"></button>';
+                endif;
+                ?>
 
-								$zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
-								$zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
-								$zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
+                <?php
 
-								if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
+                $zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
+                $zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
+                $zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
 
-									echo '<div class="g-recaptcha zerif-g-recaptcha" data-sitekey="' . esc_attr( $zerif_contactus_sitekey ) . '"></div>';
+                if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
 
-								endif;
+                  echo '<div class="g-recaptcha zerif-g-recaptcha" data-sitekey="' . esc_attr( $zerif_contactus_sitekey ) . '"></div>';
 
-								?>
+                endif;
 
-							</form>
+                ?>
 
-						</div>
+              </form>
 
-						<!-- / END CONTACT FORM-->
-					<?php
-					endif;
-					?>
+            </div>
 
-				</div> <!-- / END CONTAINER -->
+            <!-- / END CONTACT FORM-->
+          <?php
+          endif;
+          ?>
 
-			</section> <!-- / END CONTACT US SECTION-->
-			<?php
-		endif;
+        </div> <!-- / END CONTAINER -->
+
+      </section> <!-- / END CONTACT US SECTION-->
+      <?php
+    endif;
 
 }
 get_footer(); ?>

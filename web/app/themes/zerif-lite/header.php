@@ -35,98 +35,95 @@ wp_head(); ?>
 
 <?php if(isset($_POST['scrollPosition'])): ?>
 
-	<body <?php body_class(); ?> onLoad="window.scrollTo(0,<?php echo intval($_POST['scrollPosition']); ?>)">
+  <body <?php body_class(); ?> onLoad="window.scrollTo(0,<?php echo intval($_POST['scrollPosition']); ?>)">
 
 <?php else: ?>
 
-	<body <?php body_class(); ?> >
+  <body <?php body_class(); ?> >
 
-<?php endif; 
+<?php endif;
 
-	global $wp_customize;
-	
-	/* Preloader */
+  global $wp_customize;
 
-	if(is_front_page() && !isset( $wp_customize ) && get_option( 'show_on_front' ) != 'page' ): 
- 
-		$zerif_disable_preloader = get_theme_mod('zerif_disable_preloader');
-		
-		if( isset($zerif_disable_preloader) && ($zerif_disable_preloader != 1)):
-			echo '<div class="preloader">';
-				echo '<div class="status">&nbsp;</div>';
-			echo '</div>';
-		endif;	
+  /* Preloader */
 
-	endif; ?>
+  if(is_front_page() && !isset( $wp_customize ) && get_option( 'show_on_front' ) != 'page' ):
+
+    $zerif_disable_preloader = get_theme_mod('zerif_disable_preloader');
+
+    if( isset($zerif_disable_preloader) && ($zerif_disable_preloader != 1)):
+      echo '<div class="preloader">';
+        echo '<div class="status">&nbsp;</div>';
+      echo '</div>';
+    endif;
+
+  endif; ?>
 
 
 <div id="mobilebgfix">
-	<div class="mobile-bg-fix-img-wrap">
-		<div class="mobile-bg-fix-img"></div>
-	</div>
-	<div class="mobile-bg-fix-whole-site">
+  <div class="mobile-bg-fix-img-wrap">
+    <div class="mobile-bg-fix-img"></div>
+  </div>
+  <div class="mobile-bg-fix-whole-site">
 
 
 <header id="home" class="header">
 
-	<div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
+  <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
 
-		<div class="container">
+    <div class="navbar__header-container">
+      <div class="container">
 
-			<div class="navbar-header responsive-logo">
+        <div class="ocr__logo">
+          <?php
+            //
+            $zerif_logo = get_theme_mod('zerif_logo');
+            if(isset($zerif_logo) && $zerif_logo != ""):
+              echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
+                echo '<img src="'.esc_url( $zerif_logo ).'" alt="'.esc_attr( get_bloginfo('title') ).'">';
+              echo '</a>';
 
-				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+            else:
 
-				<span class="sr-only"><?php _e('Toggle navigation','zerif-lite'); ?></span>
+              echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
 
-				<span class="icon-bar"></span>
+                if( file_exists(get_stylesheet_directory()."/images/logo.png")):
+                  echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+                else:
+                  echo '<img src="'.get_template_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+                endif;
 
-				<span class="icon-bar"></span>
+              echo '</a>';
+            endif;
+          ?>
+        </div>
 
-				<span class="icon-bar"></span>
+        <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'nav navbar-nav navbar-right', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
 
-				</button>
+      </div>
+    </div>
 
-				<?php
+    <div class="container">
 
-					$zerif_logo = get_theme_mod('zerif_logo');
+      <div class="navbar-header">
 
-					if(isset($zerif_logo) && $zerif_logo != ""):
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
 
-						echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
+        <span class="sr-only"><?php _e('Toggle navigation','zerif-lite'); ?></span>
 
-							echo '<img src="'.esc_url( $zerif_logo ).'" alt="'.esc_attr( get_bloginfo('title') ).'">';
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
 
-						echo '</a>';
+        </button>
+      </div>
 
-					else:
+      <nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation"   id="site-navigation">
+        <a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'zerif-lite' ); ?></a>
+        <?php wp_nav_menu( array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'nav navbar-nav navbar-right responsive-nav main-nav-list', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
+      </nav>
 
-						echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-						
-							if( file_exists(get_stylesheet_directory()."/images/logo.png")):
-							
-								echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-							
-							else:
-								
-								echo '<img src="'.get_template_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-								
-							endif;
+    </div>
 
-						echo '</a>';
-
-					endif;
-
-				?>
-
-			</div>
-
-			<nav class="navbar-collapse bs-navbar-collapse collapse" role="navigation"   id="site-navigation">
-				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'zerif-lite' ); ?></a>
-				<?php wp_nav_menu( array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'nav navbar-nav navbar-right responsive-nav main-nav-list', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
-			</nav>
-
-		</div>
-
-	</div>
-	<!-- / END TOP BAR -->
+  </div>
+  <!-- / END TOP BAR -->

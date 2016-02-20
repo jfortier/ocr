@@ -1,0 +1,98 @@
+/** Override Bootstrap **/
+
+.navbar-nav > li {
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  padding: 9px 0;
+  height: 75px;
+}
+
+h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
+  font-size: 50%;
+  color: #BBB;
+}
+
+/** Override Zerif **/
+.social li a:hover {
+  color: #f7941e;
+}
+
+.red-btn {
+  background: #f7941e;
+}
+
+.red-btn:hover,
+.red-btn:visited {
+  background: #da7a08;
+}
+
+.green-btn {
+  background: #1e9e6b;
+}
+
+.blue-btn {
+  background: #3ab0e2;
+}
+
+.yellow-btn {
+  background: #E7AC44;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  background-color: #f7941e;
+}
+
+button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover,
+.pirate_forms .pirate-forms-submit-button:hover
+{
+  background-color: #da7a08;
+}
+
+.navbar__header-container {
+  background: #f7941e;
+  border: 0;
+}
+
+.navbar__header-background {
+  background: #f7941e;
+}
+
+.navbar__header-background .navbar-nav > li > a {
+  color: #000;
+}
+
+.ocr__logo img {
+  max-height: 125px;
+}
+
+.testimonial{
+  background: #f7941e;
+}
+
+/** Focus **/
+.focus-box:nth-child(4n+1) .service-icon:hover {
+  border: 10px solid #f7941e;
+}
+.focus-box:nth-child(4n+2) .service-icon:hover{
+  border: 10px solid #f7941e;
+}
+.focus-box:nth-child(4n+3) .service-icon:hover {
+  border: 10px solid #f7941e;
+}
+.focus-box:nth-child(4n+4) .service-icon:hover{
+  border: 10px solid #f7941e;
+}
+.focus-box:nth-child(4n+1) .red-border-bottom:before {
+  background: #f7941e;
+}
+.focus-box:nth-child(4n+2) .red-border-bottom:before {
+  background: #f7941e;
+}
+.focus-box:nth-child(4n+3) .red-border-bottom:before {
+  background: #f7941e;
+}
+.focus-box:nth-child(4n+4) .red-border-bottom:before {
+  background: #f7941e;
+}
