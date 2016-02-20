@@ -2,7 +2,7 @@
 	display:block !important;
 }
 #customize-control-zerif_email_icon img, #customize-control-zerif_phone_icon img, #customize-control-zerif_address_icon img {
-	width: auto !important; 
+	width: auto !important;
 }
 
 #accordion-section-zerif_order_section .accordion-section-title, #accordion-section-zerif_googlemap_section .accordion-section-title, #accordion-section-zerif_pricing_section .accordion-section-title, #accordion-section-zerif_videobackground_in_pro_section .accordion-section-title {
@@ -11,7 +11,7 @@
 }
 
 #accordion-section-zerif_order_section .accordion-section-title:after, #accordion-section-zerif_googlemap_section .accordion-section-title:after, #accordion-section-zerif_pricing_section .accordion-section-title:after, #accordion-section-zerif_videobackground_in_pro_section .accordion-section-title:after {
-	content: "\f160";	
+	content: "\f160";
 }
 
 .zerif-upgrade-to-pro-button {
