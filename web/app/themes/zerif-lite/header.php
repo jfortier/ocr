@@ -71,39 +71,40 @@ wp_head(); ?>
 
   <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
 
-    <div class="navbar__header-container">
+    <div class="navbar__header-container ocr__header">
       <div class="container">
 
-        <div class="ocr__logo">
-          <?php
-            //
-            $zerif_logo = get_theme_mod('zerif_logo');
-            if(isset($zerif_logo) && $zerif_logo != ""):
-              echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-                echo '<img src="'.esc_url( $zerif_logo ).'" alt="'.esc_attr( get_bloginfo('title') ).'">';
-              echo '</a>';
-
-            else:
-
-              echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-
-                if( file_exists(get_stylesheet_directory()."/images/logo.png")):
-                  echo '<img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-                else:
-                  echo '<img src="'.get_template_directory_uri().'/images/logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-                endif;
-
-              echo '</a>';
-            endif;
+        <div class="ocr__logo"><?php
+          echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
+          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo-inverse.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+          echo '</a>';
           ?>
         </div>
 
-        <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'nav navbar-nav navbar-right', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
+        <div class='bbb'>
+          <a title="Click for the Business Review of Ontario Concrete Raising
+            Ltd, a Concrete Contractors in St Catharines ON"
+            target="_blank"
+            href="http://www.bbb.org/kitchener/business-reviews/concrete-contractors/ontario-concrete-raising-ltd-in-st-catharines-on-1241231#sealclick"><img
+            alt="Click for the BBB Business Review of this Concrete Contractors in St Catharines ON" 
+            style="border: 0; height: 85px;"
+            src="http://seal-mwco.bbb.org/seals/blue-seal-63-134-ontarioconcreteraisingltd-1241231.png"
+          /></a>
+        </div>
+
+        <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'ocr__menu', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
 
       </div>
     </div>
 
     <div class="container">
+
+      <!--displayed when top menu goes away for really small devices-->
+      <div class="ocr__logo-small"><?php
+          echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
+          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+          echo '</a>';
+      ?></div>
 
       <div class="navbar-header">
 

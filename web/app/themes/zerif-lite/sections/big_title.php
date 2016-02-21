@@ -28,7 +28,9 @@
 
     if( !empty($zerif_bigtitle_title) ):
 
-      echo '<h1 class="intro-text">'.wp_kses_post( $zerif_bigtitle_title ).'</h1>';
+      echo '<h1 class="intro-text">
+        <img src="/app/themes/zerif-lite/images/ocr-logo-inverse-simple.png" width="600" /> <br />
+        '.wp_kses_post( $zerif_bigtitle_title ).'</h1>';
 
     elseif ( isset( $wp_customize ) ):
 

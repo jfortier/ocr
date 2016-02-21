@@ -1,7 +1,77 @@
+/** OCR Custom **/
+
+.bbb{
+  margin: 6px 0 0 20px;
+  display: inline-block;
+  overflow: hidden;
+  height: 65px;
+  float: right;
+}
+
+.dropshadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 767px) {
+  .bbb {
+    margin: 6px 15px 0 20px;
+  }
+}
+
+.ocr__menu {
+  display: inline-block;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .ocr__header {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .ocr__logo-small {
+    display: none;
+  }
+}
+
+.ocr__menu li {
+  list-style: none;
+}
+
+.ocr__menu li a {
+  display: inline-block;
+  margin: 0 0;
+  padding: 25px 10px;
+  color: #FFF;
+
+  /* font-family: 'Orbitron', sans-serif; */
+  /* font-weight: 500; */
+  text-transform: uppercase;
+}
+
+.ocr__menu li a:first-child {
+  padding-right: 0;
+}
+
+
+
+
 /** Override Bootstrap **/
 
 .navbar-nav > li {
   margin-bottom: 20px;
+
+  /* font-family: 'Orbitron', sans-serif; */
+  /* font-weight: 500; */
+  /* text-transform: uppercase; */
+}
+
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+  color: #f7941e;
 }
 
 .navbar-brand {
@@ -9,12 +79,22 @@
   height: 75px;
 }
 
+h1, h2, h3, h4, h5{
+  /* font-family: 'Orbitron', sans-serif; */
+}
+
 h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
   font-size: 50%;
   color: #BBB;
+  /* font-family: 'Orbitron', sans-serif; */
 }
 
 /** Override Zerif **/
+
+body.custom-background{
+  background-size: cover;
+}
+
 .social li a:hover {
   color: #f7941e;
 }
@@ -29,7 +109,10 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .s
 }
 
 .green-btn {
-  background: #1e9e6b;
+  /* background: #1e9e6b; */
+  /* background: #07c26c; */
+  /* background: #1e81f7; */
+  background: #06a95e;
 }
 
 .blue-btn {
