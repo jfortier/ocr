@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1e42233320cbb6ee4095efb0cd53adb",
-    "content-hash": "8fffa6570a1b963d62fa10e0acf107bc",
+    "hash": "0ba00a444af490d06c0c71c3e762a085",
+    "content-hash": "c0b428d306b58bef169a0c12fb6e84d6",
     "packages": [
         {
             "name": "composer/installers",
@@ -304,6 +304,26 @@
             "homepage": "https://wordpress.org/plugins/envira-gallery-lite/"
         },
         {
+            "name": "wpackagist-plugin/nice-responsive-wp-faq",
+            "version": "1.1.0",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/nice-responsive-wp-faq/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/nice-responsive-wp-faq.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/nice-responsive-wp-faq/"
+        },
+        {
             "name": "wpackagist-plugin/pirate-forms",
             "version": "1.0.7",
             "source": {
@@ -322,6 +342,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/pirate-forms/"
+        },
+        {
+            "name": "wpackagist-plugin/simple-custom-post-order",
+            "version": "2.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/simple-custom-post-order/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/simple-custom-post-order.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/simple-custom-post-order/"
         }
     ],
     "packages-dev": [],

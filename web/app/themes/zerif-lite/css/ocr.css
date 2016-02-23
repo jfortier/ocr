@@ -1,5 +1,9 @@
 /** OCR Custom **/
 
+#main-nav{
+  background: linear-gradient(to bottom, rgba(233,233,233,1) 0%,rgba(255,255,255,1) 100%);
+}
+
 .bbb{
   margin: 6px 0 0 20px;
   display: inline-block;
@@ -8,58 +12,61 @@
   float: right;
 }
 
-.dropshadow {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-}
-
 @media (max-width: 767px) {
   .bbb {
     margin: 6px 15px 0 20px;
   }
 }
 
-.ocr__menu {
+.header__logo {
+  padding: 70px 0 0;
+}
+
+.ocr__top-menu-items {
   display: inline-block;
   float: right;
   margin: 0;
   padding: 0;
 }
 
-@media (max-width: 600px) {
-  .ocr__header {
+@media (max-width: 630px) {
+  .ocr__top-menu {
     display: none;
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 630px) {
   .ocr__logo-small {
     display: none;
   }
 }
 
-.ocr__menu li {
+.ocr__top-menu-items li {
   list-style: none;
+  float: left;
 }
 
-.ocr__menu li a {
+.ocr__top-menu-items li a {
   display: inline-block;
   margin: 0 0;
-  padding: 25px 10px;
-  color: #FFF;
+  padding: 25px 25px;
+  color: #f7941e;
 
-  /* font-family: 'Orbitron', sans-serif; */
-  /* font-weight: 500; */
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
-.ocr__menu li a:first-child {
+.ocr__top-menu-items li a:first-child {
   padding-right: 0;
 }
 
 
-
-
 /** Override Bootstrap **/
+
+#main-nav .container{
+  width: 100% !important;
+}
 
 .navbar-nav > li {
   margin-bottom: 20px;
@@ -90,6 +97,30 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .s
 }
 
 /** Override Zerif **/
+
+.intro-text {
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.header-content-wrap{
+  padding: 285px 0 125px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
+}
+
+@media(max-width: 600px) {
+  .header-content-wrap{
+    padding: 85px 0 25px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
+  }
+}
+
+.contact-us {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
+}
+
+.separator-one {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
+}
 
 body.custom-background{
   background-size: cover;
@@ -134,7 +165,7 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
 }
 
 .navbar__header-container {
-  background: #f7941e;
+  /* background: #f7941e; */
   border: 0;
 }
 
@@ -150,32 +181,65 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
   max-height: 125px;
 }
 
+@media(max-width: 800px) {
+  .ocr__logo img {
+    max-height: 60px;
+  }
+}
+
 .testimonial{
   background: #f7941e;
 }
 
 /** Focus **/
+.service-icon {
+  opacity: 0.7;
+  transition: all 0.5s ease;
+}
+
+.service-icon:hover {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+
+
+
+.focus-box:nth-child(4n+1) .service-icon {
+  border: 3px solid rgba(79, 157, 249, 0.6);
+}
+.focus-box:nth-child(4n+2) .service-icon{
+  border: 3px solid rgba(79, 157, 249, 0.6);
+}
+.focus-box:nth-child(4n+3) .service-icon {
+  border: 3px solid rgba(79, 157, 249, 0.6);
+}
+.focus-box:nth-child(4n+4) .service-icon{
+  border: 3px solid rgba(79, 157, 249, 0.6);
+}
+
 .focus-box:nth-child(4n+1) .service-icon:hover {
-  border: 10px solid #f7941e;
+  border: 3px solid rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+2) .service-icon:hover{
-  border: 10px solid #f7941e;
+  border: 3px solid rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+3) .service-icon:hover {
-  border: 10px solid #f7941e;
+  border: 3px solid rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+4) .service-icon:hover{
-  border: 10px solid #f7941e;
+  border: 3px solid rgba(79, 157, 249, 1);
 }
+
+
 .focus-box:nth-child(4n+1) .red-border-bottom:before {
-  background: #f7941e;
+  background: rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+2) .red-border-bottom:before {
-  background: #f7941e;
+  background: rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+3) .red-border-bottom:before {
-  background: #f7941e;
+  background: rgba(79, 157, 249, 1);
 }
 .focus-box:nth-child(4n+4) .red-border-bottom:before {
-  background: #f7941e;
+  background: rgba(79, 157, 249, 1);
 }

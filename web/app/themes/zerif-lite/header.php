@@ -71,12 +71,12 @@ wp_head(); ?>
 
   <div id="main-nav" class="navbar navbar-inverse bs-docs-nav" role="banner">
 
-    <div class="navbar__header-container ocr__header">
+    <div class="navbar__header-container ocr__top-menu">
       <div class="container">
 
         <div class="ocr__logo"><?php
           echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo-inverse.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
           echo '</a>';
           ?>
         </div>
@@ -92,7 +92,7 @@ wp_head(); ?>
           /></a>
         </div>
 
-        <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'ocr__menu', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
+        <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'ocr__top-menu-items', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
 
       </div>
     </div>
@@ -102,7 +102,7 @@ wp_head(); ?>
       <!--displayed when top menu goes away for really small devices-->
       <div class="ocr__logo-small"><?php
           echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+            echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
           echo '</a>';
       ?></div>
 

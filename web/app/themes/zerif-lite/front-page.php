@@ -191,10 +191,6 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
 
   endif;
 
-  /* RIBBON WITH BOTTOM BUTTON */
-
-  get_template_part( 'sections/ribbon_with_bottom_button' );
-
   /* ABOUT US */
 
   $zerif_aboutus_show = get_theme_mod('zerif_aboutus_show');
@@ -214,6 +210,12 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
     get_template_part( 'sections/our_team' );
 
   endif;
+
+
+  /* RIBBON WITH BOTTOM BUTTON */
+
+  get_template_part( 'sections/ribbon_with_bottom_button' );
+
 
   /* TESTIMONIALS */
 
