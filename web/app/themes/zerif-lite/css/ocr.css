@@ -1,5 +1,19 @@
 /** OCR Custom **/
 
+.privacy-policy {
+  color: #999;
+}
+
+.extra-info {
+  color: #999;
+  text-align: left;
+  padding: 30px 0;
+}
+
+.extra-info ul{
+  margin: 0 0 1em 1em;
+}
+
 #main-nav{
   background: linear-gradient(to bottom, rgba(233,233,233,1) 0%,rgba(255,255,255,1) 100%);
 }
@@ -22,11 +36,9 @@
   padding: 70px 0 0;
 }
 
-.ocr__top-menu-items {
-  display: inline-block;
-  float: right;
-  margin: 0;
-  padding: 0;
+.ocr__top-menu {
+  /* background: #f7941e; */
+  background: linear-gradient(to bottom, rgba(247, 148, 30, 1) 0%,rgba(243,136,9 , 0.55) 100%);
 }
 
 @media (max-width: 630px) {
@@ -41,6 +53,19 @@
   }
 }
 
+.ocr__top-menu .locations{
+  display: inline-block;
+  padding: 10px 0;
+  color: #FFF;
+}
+
+.ocr__top-menu-items {
+  display: inline-block;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
 .ocr__top-menu-items li {
   list-style: none;
   float: left;
@@ -49,12 +74,12 @@
 .ocr__top-menu-items li a {
   display: inline-block;
   margin: 0 0;
-  padding: 25px 25px;
-  color: #f7941e;
+  padding: 10px 25px;
+  color: #FFFFFF;
 
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  /* font-family: 'Orbitron', sans-serif; */
+  /* font-weight: 700; */
+  /* text-transform: uppercase; */
 }
 
 .ocr__top-menu-items li a:first-child {
@@ -82,8 +107,9 @@
 }
 
 .navbar-brand {
+  margin: 0px !important;
   padding: 9px 0;
-  height: 75px;
+  height: 130px;
 }
 
 h1, h2, h3, h4, h5{
@@ -104,7 +130,7 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .s
 
 .header-content-wrap{
   /* padding: 285px 0 125px; */
-  padding: 200px 0 70px;
+  padding: 240px 0 70px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
 }
 
@@ -113,6 +139,10 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .s
     padding: 85px 0 25px;
     background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
   }
+}
+
+.focus, .works, .about-us, .features, .packages, .products, .testimonial, .contact-us{
+  padding: 60px 0;
 }
 
 .contact-us {
@@ -180,7 +210,7 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
 }
 
 .ocr__logo img {
-  max-height: 125px;
+  height: 100%;
 }
 
 @media(max-width: 800px) {
@@ -203,8 +233,6 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
   opacity: 1;
   transition: all 0.5s ease;
 }
-
-
 
 .focus-box:nth-child(4n+1) .service-icon {
   border: 3px solid rgba(79, 157, 249, 0.6);

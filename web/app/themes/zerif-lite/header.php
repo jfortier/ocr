@@ -74,23 +74,21 @@ wp_head(); ?>
     <div class="navbar__header-container ocr__top-menu">
       <div class="container">
 
-        <div class="ocr__logo"><?php
-          echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-          echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-          echo '</a>';
-          ?>
-        </div>
+        <span class='locations'>
+          Serving Niagara, Hamilton, Halton &amp; Surrounding Areas.
+        </span>
 
-        <div class='bbb'>
-          <a title="Click for the Business Review of Ontario Concrete Raising
-            Ltd, a Concrete Contractors in St Catharines ON"
-            target="_blank"
-            href="http://www.bbb.org/kitchener/business-reviews/concrete-contractors/ontario-concrete-raising-ltd-in-st-catharines-on-1241231#sealclick"><img
-            alt="Click for the BBB Business Review of this Concrete Contractors in St Catharines ON" 
-            style="border: 0; height: 85px;"
-            src="http://seal-mwco.bbb.org/seals/blue-seal-63-134-ontarioconcreteraisingltd-1241231.png"
-          /></a>
-        </div>
+
+        <!-- <div class='bbb'> -->
+        <!--   <a title="Click for the Business Review of Ontario Concrete Raising -->
+        <!--     Ltd, a Concrete Contractors in St Catharines ON" -->
+        <!--     target="_blank" -->
+        <!--     href="http://www.bbb.org/kitchener/business&#45;reviews/concrete&#45;contractors/ontario&#45;concrete&#45;raising&#45;ltd&#45;in&#45;st&#45;catharines&#45;on&#45;1241231#sealclick"><img -->
+        <!--     alt="Click for the BBB Business Review of this Concrete Contractors in St Catharines ON"  -->
+        <!--     style="border: 0; height: 85px;" -->
+        <!--     src="http://seal&#45;mwco.bbb.org/seals/blue&#45;seal&#45;63&#45;134&#45;ontarioconcreteraisingltd&#45;1241231.png" -->
+        <!--   /></a> -->
+        <!-- </div> -->
 
         <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'ocr__top-menu-items', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
 
@@ -98,6 +96,13 @@ wp_head(); ?>
     </div>
 
     <div class="container">
+
+      <div class="ocr__logo"><?php
+        echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
+        echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
+        echo '</a>';
+        ?>
+      </div>
 
       <!--displayed when top menu goes away for really small devices-->
       <div class="ocr__logo-small"><?php

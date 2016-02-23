@@ -35,6 +35,8 @@
 <div class="container">
 
   <?php
+    get_template_part('sections/footer');
+
     $footer_sections = 0;
     $zerif_address = get_theme_mod('zerif_address',__('Company address','zerif-lite'));
     $zerif_address_icon = get_theme_mod('zerif_address_icon',get_template_directory_uri().'/images/map25-redish.png');
@@ -191,13 +193,20 @@
             echo '<p id="zerif-copyright" class="zerif_hidden_if_not_customizer"></p>';
           endif;
 
-          echo '<div class="zerif-copyright-box">&copy; Copyright ' . date('Y') . '<br /> Ontario Concrete Raising</div>';
+          echo '<div class="zerif-copyright-box">&copy; Copyright ' . date('Y') . '<br /> Ontario Concrete Raising Ltd.</div>';
 
           echo '</div>';
 
     endif;
-  ?>
-
+?>
+  <br />
+  <br />
+  <p>
+    <small class='privacy-policy'>Privacy Policy: Ontario Concrete Raising Ltd.
+    is committed to conducting business with respect for your privacy and ensures
+    that the confidentiality of personal information is protected and maintained
+    and not distributed or sold to any third parties.</small>
+  </p>
 </div> <!-- / END CONTAINER -->
 
 </footer> <!-- / END FOOOTER  -->
