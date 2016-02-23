@@ -270,7 +270,10 @@ function zerif_scripts() {
         endif;
     }
 
-  add_editor_style('/css/custom-editor-style.css');
+
+    wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+
+		add_editor_style('/css/custom-editor-style.css');
 
 }
 add_action('wp_enqueue_scripts', 'zerif_scripts');
@@ -1108,7 +1111,7 @@ function zerif_excerpt_more( $more ) {
 add_filter('excerpt_more', 'zerif_excerpt_more');
 
 /* Enqueue Google reCAPTCHA scripts */
-add_action( 'wp_enqueue_scripts', 'recaptcha_scripts' );
+// add_action( 'wp_enqueue_scripts', 'recaptcha_scripts' );
 
 function recaptcha_scripts() {
 

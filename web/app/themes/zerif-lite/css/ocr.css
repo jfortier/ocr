@@ -103,7 +103,8 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .s
 }
 
 .header-content-wrap{
-  padding: 285px 0 125px;
+  /* padding: 285px 0 125px; */
+  padding: 200px 0 70px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
 }
 
@@ -140,10 +141,11 @@ body.custom-background{
 }
 
 .green-btn {
-  /* background: #1e9e6b; */
-  /* background: #07c26c; */
-  /* background: #1e81f7; */
-  background: #06a95e;
+  background: #777777;
+}
+
+.green-btn:hover {
+  background: #666666;
 }
 
 .blue-btn {
