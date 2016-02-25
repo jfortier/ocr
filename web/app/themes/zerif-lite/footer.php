@@ -193,7 +193,13 @@
             echo '<p id="zerif-copyright" class="zerif_hidden_if_not_customizer"></p>';
           endif;
 
-          echo '<div class="zerif-copyright-box">&copy; Copyright ' . date('Y') . '<br /> Ontario Concrete Raising Ltd.</div>';
+          echo '<div class="zerif-copyright-box">&copy; Copyright ' . date('Y') . '<br /> Ontario Concrete Raising Ltd.</div> <br />';
+
+          $cards = array('visa', 'mastercard', 'american-express', 'interac');
+
+          foreach ($cards as $card) {
+            echo "<img alt='{$card}' src='/app/themes/zerif-lite/images/{$card}.png' style='margin-right: 5px;' />";
+          }
 
           echo '</div>';
 
