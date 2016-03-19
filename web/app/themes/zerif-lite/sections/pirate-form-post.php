@@ -4,33 +4,23 @@
       /* recaptcha */
 
       $zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
-
       $zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
-
       $zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
 
       if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
-
             $captcha;
 
             if( isset($_POST['g-recaptcha-response']) ){
-
               $captcha=$_POST['g-recaptcha-response'];
-
             }
 
             if( !$captcha ){
-
               $hasError = true;
-
             }
 
             $response = wp_remote_get( "https://www.google.com/recaptcha/api/siteverify?secret=".$zerif_contactus_secretkey."&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR'] );
-
             if($response['body'].success==false) {
-
               $hasError = true;
-
             }
 
           endif;
@@ -38,33 +28,23 @@
       /* name */
 
       if(trim($_POST['myname']) === ''):
-
         $nameError = __('* Please enter your name.','zerif-lite');
-
         $hasError = true;
-
       else:
-
         $name = trim($_POST['myname']);
-
       endif;
 
       /* email */
 
       if(trim($_POST['myemail']) === ''):
-
         $emailError = __('* Please enter your email address.','zerif-lite');
-
         $hasError = true;
 
       elseif (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['myemail']))) :
-
         $emailError = __('* You entered an invalid email address.','zerif-lite');
-
         $hasError = true;
 
       else:
-
         $email = trim($_POST['myemail']);
 
       endif;
@@ -72,13 +52,10 @@
       /* subject */
 
       if(trim($_POST['mysubject']) === ''):
-
         $subjectError = __('* Please enter a subject.','zerif-lite');
-
         $hasError = true;
 
       else:
-
         $subject = trim($_POST['mysubject']);
 
       endif;
@@ -86,15 +63,10 @@
       /* message */
 
       if(trim($_POST['mymessage']) === ''):
-
         $messageError = __('* Please enter a message.','zerif-lite');
-
         $hasError = true;
-
       else:
-
         $message = stripslashes(trim($_POST['mymessage']));
-
       endif;
 
       /* send the email */
@@ -104,13 +76,9 @@
         $zerif_contactus_email = get_theme_mod('zerif_contactus_email');
 
         if( empty($zerif_contactus_email) ):
-
           $emailTo = get_theme_mod('zerif_email');
-
         else:
-
           $emailTo = $zerif_contactus_email;
-
         endif;
 
         if(isset($emailTo) && $emailTo != ""):
@@ -149,7 +117,6 @@
           $emailSent = true;
 
         else:
-
           $emailSent = false;
 
         endif;

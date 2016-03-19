@@ -89,6 +89,7 @@
 
 
     if( !empty($footer_class) ) {
+      echo '<div class="row">';
 
       /* COMPANY ADDRESS */
       if( !empty($zerif_address_icon) || !empty($zerif_address) ) {
@@ -203,6 +204,7 @@
 
           echo '</div>';
 
+        echo '</div">'; //row
     endif;
 ?>
   <br />

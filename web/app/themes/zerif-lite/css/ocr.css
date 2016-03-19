@@ -63,6 +63,12 @@
   color: #FFF;
 }
 
+@media (max-width: 1000px) {
+  .ocr__top-menu .locations{
+    display: none;
+  }
+}
+
 .ocr__top-menu-items {
   display: inline-block;
   float: right;
@@ -113,7 +119,7 @@
 .navbar-brand {
   margin: 0px !important;
   padding: 9px 0;
-  height: 130px;
+  height: auto;
 }
 
 h1, h2, h3, h4, h5{
@@ -214,12 +220,12 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
 }
 
 .ocr__logo img {
-  height: 100%;
+  height: 110px;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 1000px) {
   .ocr__logo img {
-    max-height: 60px;
+    height: 60px;
   }
 }
 
@@ -276,4 +282,15 @@ button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type=
 }
 .focus-box:nth-child(4n+4) .red-border-bottom:before {
   background: rgba(79, 157, 249, 1);
+}
+
+.contact__checkboxes{
+  background: #fff;
+  padding: 9px;
+  margin: 0 auto 20px auto;
+  border-radius: 4px;
+}
+
+.form-control.select-box {
+  height: 46px;
 }

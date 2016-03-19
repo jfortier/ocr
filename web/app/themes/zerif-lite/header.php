@@ -104,13 +104,6 @@ wp_head(); ?>
         ?>
       </div>
 
-      <!--displayed when top menu goes away for really small devices-->
-      <div class="ocr__logo-small"><?php
-          echo '<a href="'.esc_url( home_url( '/' ) ).'" class="navbar-brand">';
-            echo '<img src="'.get_stylesheet_directory_uri().'/images/ocr-logo.png" alt="'.esc_attr( get_bloginfo('title') ).'">';
-          echo '</a>';
-      ?></div>
-
       <div class="navbar-header">
 
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">

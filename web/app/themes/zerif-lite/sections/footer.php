@@ -1,8 +1,6 @@
-<div class='extra-info clearfix'>
-
+<div class="row extra-info">
   <div class="col-md-9">
 
-    <div class="row">
 
       <p><strong>Residential • Commercial • Municipal • Industrial</strong></p>
 
@@ -19,21 +17,22 @@
         Void Filling &amp; Stabilization
       </p>
 
+
       <p>
         <strong>Services:</strong><br />
         Concrete Raising, Concrete Leveling, Concrete Lifting, Slabjacking, Mudjacking, and Slablifting
       </p>
 
-    </div>
-
-    <div class="row">
       <p><strong>Proudly Serving:</strong> <br />
       Niagara, Hamilton, Halton & Surrounding Areas.</p>
 
-      <p>St.Catharines, Welland, Niagara Falls, Grimsby, Port Colborne, Niagara-On-The-Lake, Virgil, Beamsville, Smithville, Lincoln, Thorold, Fonthill, Pelham, Wainfleet, Jordan, Vineland, Fort Erie, Stevensville, Ridgeway, Crystal Beach.
-      Stoney Creek, Hamilton, Winona, Dundas, Ancaster, Waterdown, Binbrook, Hannon, Caledonia, Dunnville, Brantford, Carlisle, Flamborough,
+      <p>St.Catharines, Welland, Niagara Falls, Grimsby, Port Colborne,
+      Niagara-On-The-Lake, Virgil, Beamsville, Smithville, Lincoln, Thorold,
+      Fonthill, Pelham, Wainfleet, Jordan, Vineland, Fort Erie, Stevensville,
+      Ridgeway, Crystal Beach.
+      Stoney Creek, Hamilton, Winona, Dundas, Ancaster, Waterdown, Binbrook,
+      Hannon, Caledonia, Dunnville, Brantford, Carlisle, Flamborough,
       Oakville, Burlington, Mississauga, Ontario.</p>
-    </div>
   </div>
 
   <div class="col-md-3 text-center">
@@ -56,4 +55,5 @@
         /></a>
       </div>
   </div>
+
 </div>
