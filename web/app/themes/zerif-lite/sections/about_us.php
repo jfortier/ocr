@@ -23,7 +23,7 @@
 			<!-- SHORT DESCRIPTION ABOUT THE SECTION -->
 
 			<?php
-
+        /*
 				$zerif_aboutus_subtitle = get_theme_mod('zerif_aboutus_subtitle',__('Use this section to showcase important details about your business.','zerif-lite'));
 
 				if( !empty($zerif_aboutus_subtitle) ):
@@ -38,8 +38,8 @@
 					
 					echo '<div class="white-text section-legend zerif_hidden_if_not_customizer">'.$zerif_aboutus_subtitle.'</h6>';
 
-				endif;
-
+        endif;
+        */
 			?>
 		</div><!-- / END SECTION HEADER -->
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "772c446ab390a8e157bf8dcff51bb975",
-    "content-hash": "f483618e5271a2bea43f9af48caf4381",
+    "hash": "3bff93fd4cb07b213073acc2adda15f7",
+    "content-hash": "d2afefbe9cc6083349663e5e7f37f7e5",
     "packages": [
         {
             "name": "composer/installers",
@@ -349,7 +349,7 @@
             "version": "1.3.5.8",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/envira-gallery-lite/",
+                "url": "https://plugins.svn.wordpress.org/envira-gallery-lite/",
                 "reference": "tags/1.3.5.8"
             },
             "dist": {
@@ -365,11 +365,51 @@
             "homepage": "https://wordpress.org/plugins/envira-gallery-lite/"
         },
         {
+            "name": "wpackagist-plugin/foobox-image-lightbox",
+            "version": "1.0.9",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/foobox-image-lightbox/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/foobox-image-lightbox.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/foobox-image-lightbox/"
+        },
+        {
+            "name": "wpackagist-plugin/foogallery",
+            "version": "1.2.8",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/foogallery/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/foogallery.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/foogallery/"
+        },
+        {
             "name": "wpackagist-plugin/nice-responsive-wp-faq",
             "version": "1.1.0",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/nice-responsive-wp-faq/",
+                "url": "https://plugins.svn.wordpress.org/nice-responsive-wp-faq/",
                 "reference": "trunk"
             },
             "dist": {
@@ -389,8 +429,8 @@
             "version": "1.0.7",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/pirate-forms/",
-                "reference": "trunk"
+                "url": "https://plugins.svn.wordpress.org/pirate-forms/",
+                "reference": "tags/1.0.7"
             },
             "dist": {
                 "type": "zip",
@@ -409,7 +449,7 @@
             "version": "2.3",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/simple-custom-post-order/",
+                "url": "https://plugins.svn.wordpress.org/simple-custom-post-order/",
                 "reference": "trunk"
             },
             "dist": {

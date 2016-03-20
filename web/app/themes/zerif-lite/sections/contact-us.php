@@ -68,9 +68,11 @@
         <label for="subject" class="screen-reader-text"><?php _e( 'How Did You Hear About Us?', 'zerif-lite' ); ?></label>
         <select class="form-control input-box select-box" name="how" id="how">
           <option value="">How Did You Hear About Us?</option>
+
           <option value="Advertisement">Advertisement</option>
           <option value="Internet Search">Internet Search</option>
-          <option value="Word of Mouth">Word of Mouth</option>
+          <option value="Phone Book">Phone Book</option>
+          <option value="Referral">Referral</option>
         </select>
       </div>
 
@@ -136,7 +138,7 @@
 
           <div class="col-xs-12 col-sm-6 col-lg-4">
             <label class="checkbox-inline">
-              <input type="checkbox" name="types[]" value="Factory &ampl Warehouse Floors"> Ramp
+              <input type="checkbox" name="types[]" value="Factory &amp; Warehouse Floors"> Factory &amp; Warehouse Floors
             </label>
           </div>
 
