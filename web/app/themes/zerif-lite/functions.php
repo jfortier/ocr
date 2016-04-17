@@ -385,7 +385,12 @@ function zerif_register_widgets() {
     register_widget('zerif_team_widget');
 
 
-  $zerif_lite_sidebars = array ( 'sidebar-ourfocus' => 'sidebar-ourfocus', 'sidebar-testimonials' => 'sidebar-testimonials', 'sidebar-ourteam' => 'sidebar-ourteam' );
+  $zerif_lite_sidebars = array ( 
+    'sidebar-ourfocus' => 'sidebar-ourfocus', 
+    'sidebar-testimonials' => 'sidebar-testimonials', 
+    'sidebar-more-testimonials' => 'sidebar-more-testimonials', 
+    'sidebar-ourteam' => 'sidebar-ourteam',
+   );
 
   /* Register sidebars */
   foreach ( $zerif_lite_sidebars as $zerif_lite_sidebar ):
@@ -393,6 +398,9 @@ function zerif_register_widgets() {
     if( $zerif_lite_sidebar == 'sidebar-ourfocus' ):
 
       $zerif_lite_name = __('Our focus section widgets', 'zerif-lite');
+
+    elseif( $zerif_lite_sidebar == 'sidebar-more-testimonials' ):
+      $zerif_lite_name = __('MORE Testimonials section widgets', 'zerif-lite');
 
     elseif( $zerif_lite_sidebar == 'sidebar-testimonials' ):
 

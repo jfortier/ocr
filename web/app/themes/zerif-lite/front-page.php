@@ -84,7 +84,8 @@ if ( get_option( 'show_on_front' ) == 'page' ) {
   endif;
 
 	/* CONTACT US */
-	get_template_part( 'sections/contact-us' );
+	get_template_part( 'sections/quote-form' );
+	// get_template_part( 'sections/contact-us' );
 	// get_template_part( 'sections/pirate-contact-us' );
 
 

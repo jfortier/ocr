@@ -10,6 +10,7 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="<?php echo esc_url( get_template_directory_uri() ); ?>/favicon.png" />
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
@@ -77,18 +78,6 @@ wp_head(); ?>
         <span class='locations'>
           Serving Niagara, Hamilton, Halton &amp; Surrounding Areas.
         </span>
-
-
-        <!-- <div class='bbb'> -->
-        <!--   <a title="Click for the Business Review of Ontario Concrete Raising -->
-        <!--     Ltd, a Concrete Contractors in St Catharines ON" -->
-        <!--     target="_blank" -->
-        <!--     href="http://www.bbb.org/kitchener/business&#45;reviews/concrete&#45;contractors/ontario&#45;concrete&#45;raising&#45;ltd&#45;in&#45;st&#45;catharines&#45;on&#45;1241231#sealclick"><img -->
-        <!--     alt="Click for the BBB Business Review of this Concrete Contractors in St Catharines ON"  -->
-        <!--     style="border: 0; height: 85px;" -->
-        <!--     src="http://seal&#45;mwco.bbb.org/seals/blue&#45;seal&#45;63&#45;134&#45;ontarioconcreteraisingltd&#45;1241231.png" -->
-        <!--   /></a> -->
-        <!-- </div> -->
 
         <?php wp_nav_menu( array('theme_location' => 'header_menu', 'container' => false, 'menu_class' => 'ocr__top-menu-items', 'fallback_cb'     => 'zerif_wp_page_menu')); ?>
 
