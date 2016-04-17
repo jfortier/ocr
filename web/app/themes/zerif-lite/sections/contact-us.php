@@ -48,9 +48,9 @@
       </div>
 
       <div class="col-lg-4 col-sm-4 zerif-rtl-contact-name" data-scrollreveal="enter left after 0s over 1s">
-        <div class="g-recaptcha" id="inputSpam"
-          data-sitekey="6Lef1hYTAAAAAGtbweS2SZrD9v2HdiD4COyLBucN">
-        </div>
+        <div class="g-recaptcha zerif-g-recaptcha" data-sitekey="<?php
+          echo esc_attr( getenv('RECAPTCHA_KEY') );
+        ?>"></div>
       </div>
 
       <?php
