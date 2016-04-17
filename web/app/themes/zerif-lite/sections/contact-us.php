@@ -22,7 +22,7 @@
   }
 ?>
 <section class="ocr__contact">
-    <form role="form" method="POST" action="" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
+    <form role="form" method="POST" action="/contactHandler.php" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
       <input type="hidden" name="scrollPosition">
 
       <div class="col-sm-12 zerif-rtl-contact-name text-left" data-scrollreveal="enter left after 0s over 1s">

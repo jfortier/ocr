@@ -55,7 +55,7 @@ class ContactForm
     $mail = $this->configureMailer();
     $mail->addReplyTo($email, $name);
 
-    $mail->Subject = 'Request a Quote From: ' . $name;
+    $mail->Subject = 'Contact Request From: ' . $name;
     $mail->Body    = "
       <strong>From:</strong> {$name} <{$email}> 
       <br /><br />
