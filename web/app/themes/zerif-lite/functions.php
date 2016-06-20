@@ -1199,3 +1199,12 @@ function zerif_lite_update_options_in_pirate_forms() {
 
     endif;
 }
+
+// index all the things, and fuck you Yoast and Wordpress.
+add_filter('wpseo_robots', 'yoast_no_home_noindex', 999);
+function yoast_no_home_noindex($string= "") {
+    if (!is_404() ) {
+            $string= "index,follow";
+        }
+    return $string;
+}

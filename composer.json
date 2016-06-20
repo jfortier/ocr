@@ -42,7 +42,7 @@
     "php": ">=5.5",
     "composer/installers": "~1.0.12",
     "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "4.4.2",
+    "johnpbloch/wordpress": "4.5.*",
     "oscarotero/env": "^1.0",
     "wpackagist-plugin/pirate-forms": "1.0.7",
     "wpackagist-plugin/unite-gallery-lite": "dev-trunk",
@@ -51,6 +51,7 @@
     "wpackagist-plugin/foogallery": "1.2.8",
     "wpackagist-plugin/foobox-image-lightbox": "1.0.9",
     "wpackagist-plugin/image-watermark": "1.5.2.1",
+    "wpackagist-plugin/wordpress-seo": "3.2.4",
     "phpmailer/phpmailer": "^5.2"
   },
   "extra": {

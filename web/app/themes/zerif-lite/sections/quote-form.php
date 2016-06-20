@@ -103,7 +103,7 @@
 
           <div class="col-xs-12 col-sm-6 col-lg-4">
             <label class="checkbox-inline">
-              <input type="checkbox" name="types[]" value="Pool Desk"> Pool Deck
+              <input type="checkbox" name="types[]" value="Pool Deck"> Pool Deck
             </label>
           </div>
 
