@@ -44,7 +44,7 @@
           href="http://www.bbb.org/kitchener/business-reviews/concrete-contractors/ontario-concrete-raising-ltd-in-st-catharines-on-1241231#sealclick"><img
           alt="Click for the BBB Business Review of this Concrete Contractors in St Catharines ON"
           style="border: 0;"
-          src="http://seal-mwco.bbb.org/seals/blue-seal-63-134-ontarioconcreteraisingltd-1241231.png"
+          src="https://seal-mwco.bbb.org/seals/blue-seal-63-134-ontarioconcreteraisingltd-1241231.png"
         /></a>
       </div>
 
