@@ -52,7 +52,7 @@
     "wpackagist-plugin/foobox-image-lightbox": "1.0.9",
     "wpackagist-plugin/image-watermark": "1.5.2.1",
     "wpackagist-plugin/wordpress-seo": "3.2.4",
-    "phpmailer/phpmailer": "^5.2"
+    "phpmailer/phpmailer": "^6.1"
   },
   "extra": {
     "installer-paths": {
