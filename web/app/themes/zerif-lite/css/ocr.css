@@ -328,3 +328,13 @@ ul.nav > li.current_page_item > a:before, ul.nav > li.current-menu-item > a:befo
   text-align: left; 
 }
 
+#covid-announcement{
+  background: rgba(200,0,0,0.85);
+  padding: 1em;
+  color: white;
+}
+
+#covid-announcement p{
+  margin: 0;
+}
+
