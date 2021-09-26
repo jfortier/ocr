@@ -42,6 +42,24 @@
 
     <form role="form" method="POST" action="/quoteHandler.php" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
 
+
+      <script src="https://www.google.com/recaptcha/api.js?render=<?php echo getenv('RECAPTCHA_KEY'); ?>"></script>
+      <script>
+        grecaptcha.ready(function() {
+          // do request for recaptcha token
+          // response is promise with passed token
+          grecaptcha.execute('<?php echo getenv('RECAPTCHA_KEY'); ?>', {action:'validate_captcha'})
+            .then(function(token) {
+            // add token value to form
+            document.getElementById('g-recaptcha-response-quote').value = token;
+          });
+        });
+      </script>
+
+      <input type="hidden" id="g-recaptcha-response-quote" name="g-recaptcha-response-quote">
+      <input type="hidden" name="action" value="validate_captcha">
+
+
       <input type="hidden" name="scrollPosition">
 
       <input type="hidden" name="submitted" id="submitted" value="true" />
@@ -167,10 +185,6 @@
       </div>
 
       <button class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">Send Request</button>
-
-      <div class="g-recaptcha zerif-g-recaptcha" data-sitekey="<?php
-        echo esc_attr( getenv('RECAPTCHA_KEY') );
-      ?>"></div>
 
     </form>
   <!-- / END CONTACT FORM-->

@@ -11,7 +11,7 @@ class QuoteForm
     'email' => "Missing email field.",
     'city' => "Missing city field.",
     'phone' => "Missing phone field.",
-    'g-recaptcha-response' => "Please verify that you are not robot."
+    'g-recaptcha-response-quote' => "Please verify that you are not robot."
   );
 
   private $outputFields = array(
@@ -44,7 +44,7 @@ class QuoteForm
       $this->checkRequiredFields();
       $recaptcha = new GoogleRecaptcha();
 
-      if ($recaptcha->verify($_POST['g-recaptcha-response'])) {
+      if ($recaptcha->verify($_POST['g-recaptcha-response-quote'])) {
       // if (true) {
         return $this->sendEmail();
       } else {

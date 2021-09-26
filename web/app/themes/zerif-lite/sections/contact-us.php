@@ -23,6 +23,23 @@
 ?>
 <section class="ocr__contact">
     <form role="form" method="POST" action="/contactHandler.php" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
+
+      <script src="https://www.google.com/recaptcha/api.js?render=<?php echo getenv('RECAPTCHA_KEY'); ?>"></script>
+      <script>
+        grecaptcha.ready(function() {
+          // do request for recaptcha token
+          // response is promise with passed token
+          grecaptcha.execute('<?php echo getenv('RECAPTCHA_KEY'); ?>', {action:'validate_captcha'})
+            .then(function(token) {
+            // add token value to form
+            document.getElementById('g-recaptcha-response-contact').value = token;
+          });
+        });
+      </script>
+
+      <input type="hidden" id="g-recaptcha-response-contact" name="g-recaptcha-response-contact">
+      <input type="hidden" name="action" value="validate_captcha">
+
       <input type="hidden" name="scrollPosition">
 
       <div class="col-sm-12 zerif-rtl-contact-name text-left" data-scrollreveal="enter left after 0s over 1s">
@@ -45,12 +62,6 @@
           placeholder="Message"><?php
             echo $contactForm->getField("message");
           ?></textarea>
-      </div>
-
-      <div class="col-lg-4 col-sm-4 zerif-rtl-contact-name" data-scrollreveal="enter left after 0s over 1s">
-        <div class="g-recaptcha zerif-g-recaptcha" data-sitekey="<?php
-          echo esc_attr( getenv('RECAPTCHA_KEY') );
-        ?>"></div>
       </div>
 
       <?php
