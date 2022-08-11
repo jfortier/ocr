@@ -5,6 +5,7 @@ namespace JustForWeb;
 class GoogleRecaptcha
 {
   private $googleUrl = "https://www.google.com/recaptcha/api/siteverify";
+  private $scoreMax = 0.6;
 
   public function verify($response)
   {
@@ -26,9 +27,14 @@ class GoogleRecaptcha
   {
     $response = json_decode($curlData, true);
 
-    if($response['success'] == 'true') {
+    // this shouldn't display on prd
+    error_log("process request: " .  print_r($response) );
+
+    # captcha score, can increase sensitivity
+    if($response['success'] == 'true' && $response['score'] >= $this->scoreMax) {
       return true;
     }
+
     return false;
   }
 

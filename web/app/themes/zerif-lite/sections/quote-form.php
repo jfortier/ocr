@@ -1,9 +1,7 @@
 <?php
 	// use JustForWeb\ContactForm;
 	use JustForWeb\QuoteForm;
-
-	// $contactForm = new ContactForm();
-	$contactForm = new QuoteForm();
+	$quoteForm = new QuoteForm();
 ?>
 
 <section class="contact-us" id="contact">
@@ -15,32 +13,38 @@
     </div>
 
     <?php
-      use JustForWeb\ContactForm;
-      $contactForm = new ContactForm();
+      if ( isset($_POST['action']) && $_POST['action'] == 'validate_quote') {
+        try{
+          if ($quoteForm->processForm()) {
+            print("
+              <div class=\"alert alert-success\" role=\"alert\">
+                Message succesfully sent.
+              </div>
+            ");
+          }
 
-      try{
-        if ($contactForm->processForm()) {
-          print("
-            <div class=\"alert alert-success\" role=\"alert\">
-              Message succesfully sent.
-            </div>
-          ");
+        } catch (\Exception $error) {
+          printf("
+            <div class=\"alert alert-danger\" role=\"alert\">
+              <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+              <span class=\"sr-only\">Error:</span>
+              %s
+            </div>", $error->getMessage()
+          );
         }
-
-      } catch (\Exception $error) {
-        printf("
-          <div class=\"alert alert-danger\" role=\"alert\">
-            <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
-            <span class=\"sr-only\">Error:</span>
-            %s
-          </div>", $error->getMessage()
-        );
       }
     ?>
 
     <!-- / END SECTION HEADER -->
 
-    <form role="form" method="POST" action="/quoteHandler.php" onSubmit="this.scrollPosition.value=(document.body.scrollTop || document.documentElement.scrollTop)" class="contact-form">
+    <?php //the #contact is the better scroll position even though it looks wrong here ?>
+    <form id="quote-form" role="form" method="POST" action="/#contact"
+       class="contact-form"
+    >
+
+      <input type="hidden" id="g-recaptcha-response-quote" name="g-recaptcha-response-quote">
+      <input type="hidden" name="action" value="validate_quote">
+
 
       <input type="hidden" name="scrollPosition">
 
@@ -48,12 +52,12 @@
 
       <div class="col-lg-4 col-sm-4 zerif-rtl-contact-name" data-scrollreveal="enter left after 0s over 1s">
         <label for="name" class="screen-reader-text"><?php _e( 'Your Name', 'zerif-lite' ); ?></label>
-        <input required="required" type="text" name="name" id="name" placeholder="<?php _e('Your Name','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['name'])) echo esc_attr($_POST['name']);?>">
+        <input required="required" type="text" name="fullname" id="fullname" placeholder="<?php _e('Your Name','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['fullname'])) echo esc_attr($_POST['fullname']);?>">
       </div>
 
       <div class="col-lg-4 col-sm-4 zerif-rtl-contact-email" data-scrollreveal="enter left after 0s over 1s">
         <label for="email" class="screen-reader-text"><?php _e( 'Your Email', 'zerif-lite' ); ?></label>
-        <input required="required" type="email" name="email" id="email" placeholder="<?php _e('Your Email','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['email'])) echo is_email($_POST['email']) ? $_POST['email'] : ""; ?>">
+        <input required="required" type="email" name="contact-email" id="contact-email" placeholder="<?php _e('Your Email','zerif-lite'); ?>" class="form-control input-box" value="<?php if(isset($_POST['email'])) echo is_email($_POST['contact-email']) ? $_POST['contact-email'] : ""; ?>">
       </div>
 
       <div class="col-lg-4 col-sm-4 zerif-rtl-contact-email" data-scrollreveal="enter left after 0s over 1s">
@@ -160,17 +164,37 @@
 
       <div class="col-lg-12 col-sm-12" data-scrollreveal="enter right after 0s over 1s">
         <label for="message" class="screen-reader-text"><?php _e( 'Your Message', 'zerif-lite' ); ?></label>
-        <textarea name="message" id="message" class="form-control textarea-box" 
-          placeholder="<?php _e('Your Message','zerif-lite'); ?>"><?php 
-          if(isset($_POST['message'])) { echo esc_html($_POST['message']); } 
+        <textarea name="message" id="message" class="form-control textarea-box"
+          placeholder="<?php _e('Your Message','zerif-lite'); ?>"><?php
+          if(isset($_POST['message'])) { echo esc_html($_POST['message']); }
           ?></textarea>
       </div>
 
-      <button class="btn btn-primary custom-button red-btn" type="submit" data-scrollreveal="enter left after 0s over 1s">Send Request</button>
+      <button
+        id="submit-quote-form"
+        class="g-recaptcha btn btn-primary custom-button red-btn"
+        type="submit"
+        data-scrollreveal="enter left after 0s over 1s"
+        data-sitekey="<?php echo getenv('RECAPTCHA_KEY'); ?>"
+        data-callback='onSubmitQuote'
+      >Send Request</button>
 
-      <div class="g-recaptcha zerif-g-recaptcha" data-sitekey="<?php
-        echo esc_attr( getenv('RECAPTCHA_KEY') );
-      ?>"></div>
+      <script src="https://www.google.com/recaptcha/api.js?render=<?php echo getenv('RECAPTCHA_KEY'); ?>"></script>
+      <script type="text/javascript">
+          function onSubmitQuote(token){
+            // e.preventDefault();
+
+            grecaptcha.ready(function() {
+              // do request for recaptcha token
+              // response is promise with passed token
+              grecaptcha.execute('<?php echo getenv('RECAPTCHA_KEY'); ?>', {action:'submit'}).then(function(token) {
+                // add token value to form
+                document.getElementById('g-recaptcha-response-quote').value = token;
+                document.getElementById('quote-form').submit();
+              })
+            })
+          }
+      </script>
 
     </form>
   <!-- / END CONTACT FORM-->
