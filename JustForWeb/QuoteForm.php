@@ -7,16 +7,16 @@ class QuoteForm
   private $method;
 
   private $requiredFields = array(
-    'name' => "Missing name field.",
-    'email' => "Missing email field.",
+    'fullname' => "Missing name field.",
+    'contact-email' => "Missing email field.",
     'city' => "Missing city field.",
     'phone' => "Missing phone field.",
     'g-recaptcha-response-quote' => "Please verify that you are not robot."
   );
 
   private $outputFields = array(
-    'name' => "Name:",
-    'email' => "Email:",
+    'fullname' => "Name:",
+    'contact-email' => "Email:",
     'city' => "City:",
     'callback' => "Callback Time:",
     'phone' => "Phone:",
@@ -67,10 +67,10 @@ class QuoteForm
   public function sendEmail()
   {
     $mail = $this->configureMailer();
-    $mail->addReplyTo($_POST['email'], $_POST['name']);
-    $mail->addCC($_POST['email'], $_POST['name']);
+    $mail->addReplyTo($_POST['contact-email'], $_POST['fullname']);
+    $mail->addCC($_POST['contact-email'], $_POST['fullname']);
 
-    $mail->Subject = 'Request a Quote From: ' . $_POST['name'];
+    $mail->Subject = 'Request a Quote From: ' . $_POST['fullname'];
 
     $message = '';
 

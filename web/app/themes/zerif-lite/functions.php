@@ -271,7 +271,7 @@ function zerif_scripts() {
     }
 
 
-    wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+    //wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
 
 		add_editor_style('/css/custom-editor-style.css');
 
@@ -385,10 +385,10 @@ function zerif_register_widgets() {
     register_widget('zerif_team_widget');
 
 
-  $zerif_lite_sidebars = array ( 
-    'sidebar-ourfocus' => 'sidebar-ourfocus', 
-    'sidebar-testimonials' => 'sidebar-testimonials', 
-    'sidebar-more-testimonials' => 'sidebar-more-testimonials', 
+  $zerif_lite_sidebars = array (
+    'sidebar-ourfocus' => 'sidebar-ourfocus',
+    'sidebar-testimonials' => 'sidebar-testimonials',
+    'sidebar-more-testimonials' => 'sidebar-more-testimonials',
     'sidebar-ourteam' => 'sidebar-ourteam',
    );
 
@@ -1127,6 +1127,7 @@ function recaptcha_scripts() {
         $zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
         $zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
         $zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
+
         if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
             wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js' );
         endif;

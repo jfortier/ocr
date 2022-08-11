@@ -7,8 +7,8 @@ class ContactForm
   private $method;
 
   private $requiredFields = array(
-    'name' => "Missing name field.",
-    'email' => "Missing email field.",
+    'fullname' => "Missing name field.",
+    'contact-email' => "Missing email field.",
     'g-recaptcha-response-contact' => "Please verify that you are not robot."
   );
 
@@ -32,7 +32,7 @@ class ContactForm
       $recaptcha = new GoogleRecaptcha();
 
       if ($recaptcha->verify($_POST['g-recaptcha-response-contact'])) {
-        return $this->sendEmail($_POST['email'], $_POST['name'], $_POST['message']);
+        return $this->sendEmail($_POST['contact-email'], $_POST['fullname'], $_POST['message']);
       } else {
         throw new \Exception("Could not verify captcha, try again.");
       }
